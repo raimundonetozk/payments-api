@@ -37,3 +37,7 @@ def create_payment(payment: PaymentCreate):
     }
     payments_db[payment_id] = record
     return record
+
+@app.get("/payments", response_model=list[PaymentResponse])
+def list_payments():
+    return list(payments_db.values())
